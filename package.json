@@ -1,0 +1,19 @@
+{
+  "name": "stellarglob",
+  "version": "1.0.0",
+  "description": "A blog platform for intergallactic warriors!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stellargo/stellarglob.git"
+  },
+  "author": "Stellargo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stellargo/stellarglob/issues"
+  },
+  "homepage": "https://github.com/stellargo/stellarglob#readme"
+}
