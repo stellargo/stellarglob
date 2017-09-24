@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/stellargo/stellarglob/issues"
   },
-  "homepage": "https://github.com/stellargo/stellarglob#readme"
+  "homepage": "https://github.com/stellargo/stellarglob#readme",
+  "dependencies": {
+    "ejs": "^2.5.7"
+  }
 }
