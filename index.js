@@ -38,14 +38,13 @@ app.get("/",function(req,res){
 });
 
 app.get("/stellarglob",function(req,res){
-	// Blog.find({},function(err,allblogs){
-	// 	if (err){
-	// 		console.log(err);
-	// 	}else{
-	// 		res.render("index",{allblogs:allblogs});
-	// 	}
-	// });
-	res.send("hi there ");
+	Blog.find({},function(err,allblogs){
+		if (err){
+			console.log(err);
+		}else{
+			res.render("index",{allblogs:allblogs});
+		}
+	});
 });
 
 app.get("/stellarglob/new",function(req,res){
