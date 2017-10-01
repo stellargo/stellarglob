@@ -33,10 +33,12 @@ var Blog = mongoose.model("Blog",blogSchema);
 // 	}
 // });
 
+//GET ROUTE for the index.html
 app.get("/",function(req,res){
 	res.render("main");
 });
 
+//GET ROUTE for stellarglob
 app.get("/stellarglob",function(req,res){
 	Blog.find({},function(err,allblogs){
 		if (err){
@@ -47,7 +49,8 @@ app.get("/stellarglob",function(req,res){
 	});
 });
 
-app.get("/stellarglob/new",function(req,res){
+//GET ROUTE for the new blog platform
+app.get("/stellarglob/randompass",function(req,res){
 	res.render("new");
 });
 
@@ -66,7 +69,6 @@ app.post("/stellarglob",function(req,res){
 	});
 });
 
-var port = process.env.PORT || 8000;
-app.listen(80,function(){
+app.listen(9000,function(){
 	console.log("Started");
 });
