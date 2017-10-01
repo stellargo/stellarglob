@@ -33,9 +33,9 @@ var Blog = mongoose.model("Blog",blogSchema);
 // 	}
 // });
 
-app.get("/",function(req,res){
-	res.redirect("/stellarglob");
-});
+// app.get("/",function(req,res){
+// 	res.redirect("/stellarglob");
+// });
 
 app.get("/stellarglob",function(req,res){
 	Blog.find({},function(err,allblogs){
@@ -66,6 +66,6 @@ app.post("/stellarglob",function(req,res){
 	});
 });
 
-app.listen(9000,function(){
+app.listen(80,function(){
 	console.log("Started");
 });
