@@ -1,5 +1,8 @@
-
+<% include partials/header %>
+<h1>INDEX PAGE!</h1>
 <% allblogs.forEach(function(blog){ %>
-<p> <%= blog.title %> </p>
-<img src="<%= blog.image %>">
+	<h2> <%= blog.title %> </h2>
+	<img src="<%= blog.image %>" width=200px>
+	<a href="localhost:9000/stellarglob/<%= blog._id %>">Show More</a>
 <% });%>
+<% include partials/footer %>
