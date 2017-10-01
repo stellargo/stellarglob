@@ -67,6 +67,7 @@ app.post("/stellarglob",function(req,res){
 	});
 });
 
-app.listen(8000,function(){
+var port = process.env.PORT || 8000;
+app.listen(port,function(){
 	console.log("Started");
 });
