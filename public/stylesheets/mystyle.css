@@ -8,8 +8,9 @@
 }
 
 .myheading{
-	margin: auto;
+	text-align: center;
 	padding-top: 100px;
+	color: #1b0072;
 }
 
 body{
