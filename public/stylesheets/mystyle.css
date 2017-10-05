@@ -7,7 +7,7 @@
 
 }
 
-.landing{
+html{
 	/*padding-top: 100px;*/
 	background: url('http://icanbecreative.com/resources/files/articles/40-high-resolution-wallpapers-for-minimalist-lovers/sources/everest-minimalist-wallpaper-blue.png') no-repeat center center fixed; 
   	-webkit-background-size: cover;
@@ -15,6 +15,10 @@
   	-o-background-size: cover;
   	background-size: cover;
 
+}
+
+.landing{
+	padding-top: 100px;
 }
 
 .buttons{
