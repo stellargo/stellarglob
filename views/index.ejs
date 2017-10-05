@@ -3,6 +3,6 @@
 <% allblogs.forEach(function(blog){ %>
 	<h2> <%= blog.title %> </h2>
 	<img src="<%= blog.image %>" width=200px>
-	<a href="localhost:9000/stellarglob/<%= blog._id %>">Show More</a>
+	<a href="/stellarglob/<%= blog._id %>">Show More</a>
 <% });%>
 <% include partials/footer %>
