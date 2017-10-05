@@ -1,8 +1,13 @@
-html{
-	
+.jumbos{
+	padding-top: 100px;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+
 }
 
-.jumbotron{
+.jumbo1{
 	padding-top: 100px;
 	background: url('/images/IMG_3987.jpg') no-repeat center center fixed; 
   	-webkit-background-size: cover;
@@ -12,7 +17,9 @@ html{
 
 }
 
-.jumbo{
+
+
+.jumbo2{
 	padding-top: 100px;
 	background: url('/images/IMG_2889.jpg') no-repeat center center fixed; 
   	-webkit-background-size: cover;
