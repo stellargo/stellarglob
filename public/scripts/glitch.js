@@ -1,4 +1,6 @@
-document.getElementsByClassName('glitch').forEach(text){
+var texts = document.getElementsByClassName('glitch');
+
+Array.prototype.forEach.call(texts, function(text){
 
 	setInterval(myMethod, 140);
 	var i=0;
@@ -12,4 +14,4 @@ document.getElementsByClassName('glitch').forEach(text){
 			i--;
 		}
 	}
-};
+});
