@@ -1,4 +1,6 @@
 var texts = document.getElementsByClassName('glitch');
+var strings = ['Code. Compile. Run.','Another subtopic'];
+var istring = 0;
 
 Array.prototype.forEach.call(texts, function(text){
 
@@ -6,12 +8,13 @@ Array.prototype.forEach.call(texts, function(text){
 	var i=0;
 
 	function myMethod(){
-		var string = 'Code. Compile. Run.';
+		var string = strings[istring];
 		text.innerHTML = string.substring(0,i) + '/';
 		i++;
 		if (i==string.length+1){
 			setTimeout(function myMethod2(){}, 10000);
 			i--;
 		}
+	istring++;
 	}
 });
