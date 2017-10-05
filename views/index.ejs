@@ -1,10 +1,6 @@
 <% include partials/header %>
 <h1>INDEX PAGE!</h1>
 <% allblogs.forEach(function(blog){ %>
-	<h2> <%= blog.title %> </h2>
-	<img src="<%= blog.image %>" width=200px>
-	<a href="/stellarglob/<%= blog._id %>">Show More</a>
-
 	<div class="jumbotron jumbos" style="background: url(<%= blog.image %>) no-repeat center center fixed; ">
 		<div class="container">
 			<h1 class="display-3">
