@@ -24,8 +24,9 @@ body{
 }
 
 .blogcontent{
-	text-align: center;
-	border-color: white;
+	background-color: white;
+	border-color: black;
+	border-width: 5px solid;
 }
 
 .buttons{
