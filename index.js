@@ -55,6 +55,14 @@ app.get("/stellarglob/randompass",function(req,res){
 });
 
 app.get("/stellarglob/:id",function(req,res){
+	Blog.findById(req.params.id, function(err,foundblog){
+		if (err){
+			res.redirect("/stellarglob");
+		}
+		else{
+			res.render("show",{blog:foundblog});
+		}
+	});
 	res.render("new");
 });
 
