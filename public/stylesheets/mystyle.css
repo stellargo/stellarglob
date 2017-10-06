@@ -13,11 +13,6 @@
 	color: #1b0072;
 }
 
-.blogcontent{
-	text-align: center;
-	border-color: white;
-}
-
 body{
 	/*padding-top: 100px;*/
 	background: url('http://icanbecreative.com/resources/files/articles/40-high-resolution-wallpapers-for-minimalist-lovers/sources/everest-minimalist-wallpaper-blue.png') no-repeat center center fixed; 
@@ -26,6 +21,11 @@ body{
   	-o-background-size: cover;
   	background-size: cover;
 
+}
+
+.blogcontent{
+	text-align: center;
+	border-color: white;
 }
 
 .buttons{
