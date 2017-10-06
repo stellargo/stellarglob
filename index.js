@@ -63,7 +63,6 @@ app.get("/stellarglob/:id",function(req,res){
 			res.render("show",{blog:foundblog});
 		}
 	});
-	res.render("new");
 });
 
 app.post("/stellarglob",function(req,res){
