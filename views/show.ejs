@@ -19,7 +19,9 @@
 </div>
 
 <div class="container blogcontent">
-	<span><%= blog.body %></span>
+	<script>
+		document.getElementsByClassName("blogcontent")[0].innerHTML = <%= blog.title %>;
+	</script>
 </div>
 
 <% include partials/footer %>
