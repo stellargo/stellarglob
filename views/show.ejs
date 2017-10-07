@@ -19,9 +19,10 @@
 </div>
 
 <div class="container blogcontent">
-	<script>
-		document.getElementsByClassName("blogcontent")[0].innerHTML = <%= blog.title %>;
-	</script>
 </div>
+
+<script>
+	document.getElementsByClassName("blogcontent")[0].innerHTML = <%= blog.body %>;
+</script>
 
 <% include partials/footer %>
