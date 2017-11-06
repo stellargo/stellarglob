@@ -1,7 +1,8 @@
 var express 	= require("express"),
 	app 		= express(),
 	bodyParser 	= require("body-parser"),
-	mongoose	= require("mongoose");
+	mongoose	= require("mongoose"),
+	request = require('request');
 
 mongoose.connect("mongodb://localhost/stellarglob");
 app.set("view engine","ejs");
@@ -68,6 +69,17 @@ app.get("/stellarglob/:id",function(req,res){
 app.post("/stellarglob",function(req,res){
 
 	Blog.create(req.body.blog,function(err,blog){
+		if (err){
+			console.log(err);
+		}else{
+			res.redirect("/stellarglob");
+		}
+	});
+});
+
+app.post("/meseekbot",function(req,res){
+
+	Blog.create(req,function(err,blog){
 		if (err){
 			console.log(err);
 		}else{
