@@ -78,14 +78,7 @@ app.post("/stellarglob",function(req,res){
 });
 
 app.post("/meseekbot",function(req,res){
-
-	Blog.create(req,function(err,blog){
-		if (err){
-			console.log(err);
-		}else{
-			res.redirect("/stellarglob");
-		}
-	});
+	res.redirect("/stellarglob");
 });
 
 app.listen(80,function(){
