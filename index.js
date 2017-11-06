@@ -77,6 +77,10 @@ app.post("/stellarglob",function(req,res){
 	});
 });
 
+app.get("/meseekbot",function(req,res){
+
+});
+
 app.post("/meseekbot",function(req,res){
 	Blog.create(req.body,function(err,blog){
 		if (err){
