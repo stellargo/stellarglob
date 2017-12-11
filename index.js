@@ -13,6 +13,15 @@ var express 	= require("express"),
 	Strategy = require('passport-facebook').Strategy;
 
 //********************************************************
+// notes service -> stellarNotes
+//********************************************************
+
+var serveIndex = require('serve-index');
+
+    app.use(express.static(__dirname + "/"))
+    app.use('/test', serveIndex(__dirname + '/test'));
+
+//********************************************************
 // messenger service -> stellarMsg
 //********************************************************
 
