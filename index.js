@@ -41,21 +41,21 @@ passport.deserializeUser(function(obj, cb) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/stellarMsg',
-  require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
-    res.render('messaginghome');
-  });
+// app.get('/stellarMsg',
+//   require('connect-ensure-login').ensureLoggedIn(),
+//   function(req, res){
+//     res.render('messaginghome');
+//   });
 
-// app.get("/stellarMsg",function(req,res){
-// 	if (req.user){
-// 		console.log("111");
-// 		res.render("messaginghome");
-// 	} else {
-// 		console.log("222");
-// 		res.redirect('/login');
-// 	}
-// });
+app.get("/stellarMsg",function(req,res){
+	if (req.user){
+		console.log("111");
+		res.render("messaginghome");
+	} else {
+		console.log("222");
+		res.redirect('/login');
+	}
+});
 
 app.get('/login',
   function(req, res){
@@ -64,9 +64,8 @@ app.get('/login',
   });
 
 app.get('/login/facebook',
-  passport.authenticate('facebook'),function(req,res){
-  	console.log("555");
-  });
+  passport.authenticate('facebook')
+  );
 
 app.get('/login/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
