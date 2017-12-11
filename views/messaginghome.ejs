@@ -32,7 +32,7 @@
     });
     socket.on('chat message', function(msg){
       if (msg!=''){
-        $('#messages').append($('<div class="alert alert-danger" role="alert">').text(msg));
+        $('#messages').append($('<div class="alert alert-'+'danger'+'" role="alert">').text(msg));
       }
     });
   });
