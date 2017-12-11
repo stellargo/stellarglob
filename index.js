@@ -42,7 +42,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/stellarMsg",function(req,res){
-	res.render("messaginghome")
+	if (req.user){
+		res.render("messaginghome");
+	} else {
+		res.redirect('/login');
+	}
 });
 
 app.get('/login',
