@@ -53,11 +53,17 @@ app.get('/login',
 app.get('/login/facebook',
   passport.authenticate('facebook'));
 
-app.get('/login/facebook/return', 
-  passport.authenticate('facebook', { failureRedirect: '/logi' }),
+app.get('/login/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/stellarMsg');
   });
+
+// app.get('/login/facebook/return', 
+//   passport.authenticate('facebook', { failureRedirect: '/logi' }),
+//   function(req, res) {
+//     res.redirect('/');
+//   });
 
 // app.get('/stellarMsg',
 //   require('connect-ensure-login').ensureLoggedIn(),
@@ -65,11 +71,11 @@ app.get('/login/facebook/return',
 //     res.render('messaginghome');
 //   });
 
-app.get('/stellarMsg',
-  require('connect-ensure-login').ensureLoggedIn('/login'),
-  function(req, res) {
-    res.render('/stellarMsg');
-  });
+// app.get('/stellarMsg',
+//   require('connect-ensure-login').ensureLoggedIn('/login'),
+//   function(req, res) {
+//     res.render('/stellarMsg');
+//   });
 
 // app.get('/stellarMsg',
 //   passport.authenticate('facebook'));
