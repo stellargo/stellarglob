@@ -70,6 +70,6 @@ app.post("/stellarglob",function(req,res){
 	});
 });
 
-app.listen(8080,'localhost',function(){
+app.listen(80,function(){
 	console.log("Started");
 });
