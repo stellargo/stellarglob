@@ -19,7 +19,6 @@ var express 	= require("express"),
 
 var username;
 var arr = ["primary","secondary","success","info","light"];
-var colorname = arr[Math.floor(Math.random()*arr.length)];
 
 passport.use(new Strategy({
     clientID: process.env.CLIENT_ID,
@@ -54,6 +53,7 @@ app.get('/stellarMsg',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
   	username = req.user.displayName;
+  	var colorname = arr[Math.floor(Math.random()*arr.length)];
   	console.log(req.user);
   	res.render("messaginghome",{ user: req.user });
   });
