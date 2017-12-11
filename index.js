@@ -54,8 +54,8 @@ app.get('/stellarMsg',
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg,from){
-  	from = req.user.displayName;
-    io.emit('chat message', msg,from);
+    console.log('I received a private message by ', from, ' saying ', msg);
+    io.emit('chat message', msg);
   });
   socket.on('disconnect', function(){
     io.emit('chat message', 'user has disconnected');
