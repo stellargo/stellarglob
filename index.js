@@ -32,6 +32,14 @@ app.get("/stellarMsg",function(req,res){
 	res.render("messaginghome")
 });
 
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
+    
+
 //GET ROUTE for stellarglob
 app.get("/stellarglob",function(req,res){
 	Blog.find({},function(err,allblogs){
