@@ -1,10 +1,65 @@
+//********************************************************
+// All imported variables
+//********************************************************
+
 var express 	= require("express"),
 	app 		= express(),
 	bodyParser 	= require("body-parser"),
 	mongoose	= require("mongoose"),
 	request = require('request'),
 	http = require('http').Server(app)
-	io = require('socket.io')(http);
+	io = require('socket.io')(http),
+	passport = require('passport'),
+	Strategy = require('passport-facebook').Strategy;
+
+//********************************************************
+// messenger service -> stellarMsg
+//********************************************************
+
+passport.use(new Strategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: 'http://www.sumitsarin.com/stellarglob'
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    // In this example, the user's Facebook profile is supplied as the user
+    // record.  In a production-quality application, the Facebook profile should
+    // be associated with a user record in the application's database, which
+    // allows for account linking and authentication with other identity
+    // providers.
+    return cb(null, profile);
+  }));
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// app.get("/stellarMsg",function(req,res){
+// 	res.render("messaginghome")
+// });
+
+app.get('/stellarMsg', 
+  passport.authenticate('facebook', { failureRedirect: '/stellarglob' }),
+  function(req, res) {
+    res.render("messaginghome");
+  });
+
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+
+//********************************************************
+// blogging service -> stellarglob
+//********************************************************
 
 mongoose.connect("mongodb://localhost/stellarglob");
 app.set("view engine","ejs");
@@ -26,17 +81,6 @@ var Blog = mongoose.model("Blog",blogSchema);
 //GET ROUTE for the index.html
 app.get("/",function(req,res){
 	res.render("main");
-});
-
-//GET ROUTE for messenger service
-app.get("/stellarMsg",function(req,res){
-	res.render("messaginghome")
-});
-
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
 });
 
 
@@ -77,6 +121,10 @@ app.post("/stellarglob",function(req,res){
 		}
 	});
 });
+
+//********************************************************
+// Listening port (80)
+//********************************************************
 
 http.listen(80,function(){
 	console.log("Started");
