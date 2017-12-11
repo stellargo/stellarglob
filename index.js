@@ -45,8 +45,15 @@ app.use(passport.session());
 // 	res.render("messaginghome")
 // });
 
+
 app.get('/stellarMsg',
-  passport.authenticate('facebook'));
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('messaginghome');
+  });
+
+// app.get('/stellarMsg',
+//   passport.authenticate('facebook'));
 
 
 io.on('connection', function(socket){
