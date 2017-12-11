@@ -1,6 +1,6 @@
 <% include partials/header %>
 <div>
-  <div class="container">
+  <div class="container" style="padding-top: 10px;">
     <%= user.displayName %>'s chat
   </div>
   <div class="container">
@@ -9,8 +9,14 @@
   </div>
   <div class="container">
     <form action="">
-      <input id="m" type="text" class="form-control" placeholder="Enter Message">
-      <button type="button" class="btn btn-danger">Send</button>
+      <div class="form-row align-items-center">
+        <div class="col-auto">
+          <input id="m" type="text" class="form-control" placeholder="Enter Message">
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-danger">Send</button>
+        </div>
+      </div>
     </form>
   </div>
 </div>
