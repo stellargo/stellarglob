@@ -59,10 +59,16 @@ app.get('/login/facebook/return',
     res.redirect('/');
   });
 
+// app.get('/stellarMsg',
+//   require('connect-ensure-login').ensureLoggedIn(),
+//   function(req, res){
+//     res.render('messaginghome');
+//   });
+
 app.get('/stellarMsg',
-  require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
-    res.render('messaginghome');
+  require('connect-ensure-login').ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('/stellarMsg');
   });
 
 // app.get('/stellarMsg',
