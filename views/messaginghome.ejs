@@ -32,6 +32,7 @@
     });
     socket.on('chat message', function(msg){
       if (msg!=''){
+        msg = <%= user.displayName %> + msg;
         $('#messages').append($('<div class="alert alert-danger" role="alert">').text(msg));
       }
     });
