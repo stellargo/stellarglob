@@ -53,6 +53,12 @@ app.get('/login',
 app.get('/login/facebook',
   passport.authenticate('facebook'));
 
+app.get('/login/facebook/return', 
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
 app.get('/stellarMsg',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
