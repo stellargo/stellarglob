@@ -17,8 +17,8 @@ var express 	= require("express"),
 //********************************************************
 
 passport.use(new Strategy({
-    clientID: '525856581146613',
-    clientSecret: 'd5cb2eb635afe3fedf1d099de45192de',
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: 'http://www.sumitsarin.com'
   },
   function(accessToken, refreshToken, profile, cb) {
