@@ -3,7 +3,7 @@ var express 	= require("express"),
 	bodyParser 	= require("body-parser"),
 	mongoose	= require("mongoose"),
 	request = require('request'),
-	io = require('socket.io');
+	io = require('socket.io')(app);
 
 mongoose.connect("mongodb://localhost/stellarglob");
 app.set("view engine","ejs");
@@ -38,7 +38,7 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 });
-    
+
 
 //GET ROUTE for stellarglob
 app.get("/stellarglob",function(req,res){
