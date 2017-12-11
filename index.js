@@ -53,8 +53,8 @@ app.get('/stellarMsg',
   });
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('chat message', function(msg,from){
+    io.emit('chat message', msg,from);
   });
   socket.on('disconnect', function(){
     io.emit('chat message', 'user has disconnected');
