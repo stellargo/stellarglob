@@ -45,11 +45,9 @@ app.use(passport.session());
 // 	res.render("messaginghome")
 // });
 
-app.get('/stellarMsg', 
-  passport.authenticate('facebook', { failureRedirect: '/stellarglob' }),
-  function(req, res) {
-    res.render("messaginghome");
-  });
+app.get('/stellarMsg',
+  passport.authenticate('facebook'));
+
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
