@@ -47,15 +47,15 @@ app.use(passport.session());
 //     res.render('messaginghome');
 //   });
 
-app.get("/stellarMsg",function(req,res){
-	if (req.user){
-		console.log("111");
-		res.render("messaginghome");
-	} else {
-		console.log("222");
-		res.redirect('/login');
-	}
-});
+// app.get("/stellarMsg",function(req,res){
+// 	if (req.user){
+// 		console.log("111");
+// 		res.render("messaginghome");
+// 	} else {
+// 		console.log("222");
+// 		res.redirect('/login');
+// 	}
+// });
 
 app.get('/login',
   function(req, res){
