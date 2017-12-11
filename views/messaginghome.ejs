@@ -32,7 +32,7 @@
     });
     socket.on('chat message', function(msg){
       if (msg!=''){
-        name = String(<% user.displayName %>);
+        name = String(<%= user.displayName %>);
         msg = name + msg;
         $('#messages').append($('<div class="alert alert-danger" role="alert">').text(msg));
       }
