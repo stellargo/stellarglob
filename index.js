@@ -22,11 +22,6 @@ passport.use(new Strategy({
     callbackURL: 'http://www.sumitsarin.com/stellarMsg'
   },
   function(accessToken, refreshToken, profile, cb) {
-    // In this example, the user's Facebook profile is supplied as the user
-    // record.  In a production-quality application, the Facebook profile should
-    // be associated with a user record in the application's database, which
-    // allows for account linking and authentication with other identity
-    // providers.
     return cb(null, profile);
   }));
 
@@ -41,25 +36,8 @@ passport.deserializeUser(function(obj, cb) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.get('/stellarMsg',
-//   require('connect-ensure-login').ensureLoggedIn(),
-//   function(req, res){
-//     res.render('messaginghome');
-//   });
-
-// app.get("/stellarMsg",function(req,res){
-// 	if (req.user){
-// 		console.log("111");
-// 		res.render("messaginghome");
-// 	} else {
-// 		console.log("222");
-// 		res.redirect('/login');
-// 	}
-// });
-
 app.get('/login',
   function(req, res){
-  	console.log("333");
     res.render('login');
   });
 
@@ -71,30 +49,8 @@ app.get('/stellarMsg',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
   	console.log(req.user);
-  	res.render("messaginghome");
+  	res.render("messaginghome",{ user: req.user });
   });
-
-// app.get('/login/facebook/return', 
-//   passport.authenticate('facebook', { failureRedirect: '/logi' }),
-//   function(req, res) {
-//     res.redirect('/');
-//   });
-
-// app.get('/stellarMsg',
-//   require('connect-ensure-login').ensureLoggedIn(),
-//   function(req, res){
-//     res.render('messaginghome');
-//   });
-
-// app.get('/stellarMsg',
-//   require('connect-ensure-login').ensureLoggedIn('/login'),
-//   function(req, res) {
-//     res.render('/stellarMsg');
-//   });
-
-// app.get('/stellarMsg',
-//   passport.authenticate('facebook'));
-
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
