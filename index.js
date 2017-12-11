@@ -17,8 +17,8 @@ var express 	= require("express"),
 //********************************************************
 
 passport.use(new Strategy({
-    clientID: 525856581146613,
-    clientSecret: pd5cb2eb635afe3fedf1d099de45192de,
+    clientID: '525856581146613',
+    clientSecret: 'pd5cb2eb635afe3fedf1d099de45192de',
     callbackURL: 'http://www.sumitsarin.com/stellarglob'
   },
   function(accessToken, refreshToken, profile, cb) {
