@@ -18,8 +18,8 @@ var express 	= require("express"),
 
 var serveIndex = require('serve-index');
 
-    app.use(express.static(__dirname + "/"));
-    app.use('/views', serveIndex(__dirname + '/views'));
+    app.use(express.static(__dirname + "/stellarnotes"));
+    app.use('/stellarnotes', serveIndex(__dirname + '/stellarnotes'));
 
 //********************************************************
 // messenger service -> stellarMsg
