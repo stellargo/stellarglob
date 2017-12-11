@@ -12,11 +12,14 @@ var express 	= require("express"),
 	passport = require('passport'),
 	Strategy = require('passport-facebook').Strategy;
 
-var username;
-
 //********************************************************
 // messenger service -> stellarMsg
 //********************************************************
+
+
+var username;
+var arr = ["primary","secondary","success","info","light"];
+var colorname = arr[Math.floor(Math.random()*arr.length)];
 
 passport.use(new Strategy({
     clientID: process.env.CLIENT_ID,
@@ -56,9 +59,10 @@ app.get('/stellarMsg',
   });
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg,from){
+  socket.on('chat message', function(msg,from,colorpick){
   	from = username;
-    io.emit('chat message', msg, from);
+  	colorpick = colorname;
+    io.emit('chat message', msg, from, colorpick);
   });
   socket.on('disconnect', function(){
     io.emit('chat message', 'user has disconnected');

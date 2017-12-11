@@ -24,17 +24,15 @@
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
   $(function () {
-    var arr = ["primary","secondary","success","info","light"];
-    var colorpick = arr[Math.floor(Math.random()*arr.length)];
     var socket = io();
     $('form').submit(function(){
       socket.emit('chat message', $('#m').val());
       $('#m').val('');
       return false;
     });
-    socket.on('chat message', function(msg,from){
+    socket.on('chat message', function(msg,from,colorpick){
       if (msg!=''){
-        $('#messages').append($('<div class="alert alert-'+colorpick+'" role="alert">').text(String(from) + ": "+String(msg)));
+        $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(from) + ": "+String(msg)));
       }
     });
   });
