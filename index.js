@@ -2,7 +2,9 @@ var express 	= require("express"),
 	app 		= express(),
 	bodyParser 	= require("body-parser"),
 	mongoose	= require("mongoose"),
-	request = require('request');
+	request = require('request'),
+	http = require('http').Server(app),
+	io = require('socket.io')(http);
 
 mongoose.connect("mongodb://localhost/stellarglob");
 app.set("view engine","ejs");
@@ -21,22 +23,14 @@ var blogSchema = new mongoose.Schema({
 });
 var Blog = mongoose.model("Blog",blogSchema);
 
-// Blog.create({
-// 	title: "test",
-// 	image: "https://www.ecampusnews.com/files/2016/01/blogs.jpg",
-// 	body: "hello world!"
-
-// },function(err,blog){
-// 	if (err){
-// 		console.log(err);
-// 	}else{
-// 		console.log(blog);
-// 	}
-// });
-
 //GET ROUTE for the index.html
 app.get("/",function(req,res){
 	res.render("main");
+});
+
+//GET ROUTE for messenger service
+app.get("/stellarMsg",function(req,res){
+	res.render("messaginghome")
 });
 
 //GET ROUTE for stellarglob
