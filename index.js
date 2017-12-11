@@ -49,7 +49,7 @@ app.get('/stellarMsg',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
   	console.log(req.user);
-  	res.render("messaginghome",{ user: req.user });
+  	res.render("messaginghome");
   });
 
 io.on('connection', function(socket){
