@@ -70,8 +70,8 @@ app.get('/login/facebook',
 app.get('/login/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-  	console.log("444");
-    res.redirect('/stellarMsg');
+  	console.log(req.user);
+  	res.render("messaginghome");
   });
 
 // app.get('/login/facebook/return', 
