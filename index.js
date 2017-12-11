@@ -3,7 +3,8 @@ var express 	= require("express"),
 	bodyParser 	= require("body-parser"),
 	mongoose	= require("mongoose"),
 	request = require('request'),
-	io = require('socket.io')(app);
+	http = require('http').createServer(handler)
+	io = require('socket.io')(http);
 
 mongoose.connect("mongodb://localhost/stellarglob");
 app.set("view engine","ejs");
