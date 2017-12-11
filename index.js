@@ -12,6 +12,8 @@ var express 	= require("express"),
 	passport = require('passport'),
 	Strategy = require('passport-facebook').Strategy;
 
+var username;
+
 //********************************************************
 // messenger service -> stellarMsg
 //********************************************************
@@ -48,13 +50,14 @@ app.get('/login/facebook',
 app.get('/stellarMsg',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
+  	username = req.user.displayName;
   	console.log(req.user);
   	res.render("messaginghome",{ user: req.user });
   });
 
 io.on('connection', function(socket){
   socket.on('chat message', function(req,msg,from){
-  	from = req.user.displayName;
+  	from = username;
     io.emit('chat message', msg, from);
   });
   socket.on('disconnect', function(){
