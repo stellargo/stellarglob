@@ -31,9 +31,8 @@
       return false;
     });
     socket.on('chat message', function(msg){
-      <% var name = user.displayName%>
       if (msg!=''){
-        $('#messages').append($('<div class="alert alert-danger" role="alert">').text(name));
+        $('#messages').append($('<div class="alert alert-danger" role="alert">').text(msg));
       }
     });
     socket.on('disconnect', function(msg){
