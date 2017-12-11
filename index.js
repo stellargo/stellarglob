@@ -56,7 +56,7 @@ app.get('/stellarMsg',
   });
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(req,msg,from){
+  socket.on('chat message', function(msg,from){
   	from = username;
     io.emit('chat message', msg, from);
   });
