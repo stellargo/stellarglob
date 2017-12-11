@@ -58,7 +58,7 @@ app.get('/login',
   });
 
 app.get('/login/facebook',
-  passport.authenticate('facebook'),function(){
+  passport.authenticate('facebook'),function(req,res){
   	console.log("555");
   });
 
