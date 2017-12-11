@@ -3,8 +3,7 @@ var express 	= require("express"),
 	bodyParser 	= require("body-parser"),
 	mongoose	= require("mongoose"),
 	request = require('request'),
-	http = require('http').Server(app),
-	io = require('socket.io')(http);
+	io = require('socket.io');
 
 mongoose.connect("mongodb://localhost/stellarglob");
 app.set("view engine","ejs");
@@ -71,20 +70,6 @@ app.post("/stellarglob",function(req,res){
 	});
 });
 
-app.get("/meseekbot",function(req,res){
-
-});
-
-app.post("/meseekbot",function(req,res){
-	Blog.create(req.body,function(err,blog){
-		if (err){
-			console.log(err);
-		}else{
-			res.redirect("/stellarglob");
-		}
-	});
-});
-
-app.listen(80,function(){
+app.listen(8080,'localhost',function(){
 	console.log("Started");
 });
