@@ -35,9 +35,6 @@
         $('#messages').append($('<div class="alert alert-danger" role="alert">').text(msg));
       }
     });
-    socket.on('disconnect', function(msg){
-      $('#messages').append($('<li>').text(msg));
-    });
   });
 </script>
 <% include partials/footer %>
