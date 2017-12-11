@@ -19,7 +19,7 @@ var express 	= require("express"),
 passport.use(new Strategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: 'http://www.sumitsarin.com/login/facebook/callback'
+    callbackURL: 'http://www.sumitsarin.com/stellarMsg'
   },
   function(accessToken, refreshToken, profile, cb) {
     // In this example, the user's Facebook profile is supplied as the user
@@ -67,7 +67,7 @@ app.get('/login/facebook',
   passport.authenticate('facebook')
   );
 
-app.get('/login/facebook/callback',
+app.get('/stellarMsg',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
   	console.log(req.user);
