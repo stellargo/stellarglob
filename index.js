@@ -41,15 +41,21 @@ passport.deserializeUser(function(obj, cb) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/stellarMsg",function(req,res){
-	if (req.user){
-		console.log("111");
-		res.render("messaginghome");
-	} else {
-		console.log("222");
-		res.redirect('/login');
-	}
-});
+app.get('/stellarMsg',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('messaginghome');
+  });
+
+// app.get("/stellarMsg",function(req,res){
+// 	if (req.user){
+// 		console.log("111");
+// 		res.render("messaginghome");
+// 	} else {
+// 		console.log("222");
+// 		res.redirect('/login');
+// 	}
+// });
 
 app.get('/login',
   function(req, res){
