@@ -19,7 +19,7 @@ var express 	= require("express"),
 passport.use(new Strategy({
     clientID: '525856581146613',
     clientSecret: 'pd5cb2eb635afe3fedf1d099de45192de',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback'
+    callbackURL: 'http://www.sumitsarin.com/stellarMsg'
   },
   function(accessToken, refreshToken, profile, cb) {
     // In this example, the user's Facebook profile is supplied as the user
