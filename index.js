@@ -66,7 +66,7 @@ io.on('connection', function(socket){
     io.emit('chat message', msg, from, colorpick);
   });
   socket.on('disconnect', function(){
-    io.emit('chat message', String(username) + ' has disconnected');
+    io.emit('chat message', String(username),' has disconnected','danger');
   });
 });
 
