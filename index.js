@@ -41,9 +41,9 @@ passport.deserializeUser(function(obj, cb) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.get("/stellarMsg",function(req,res){
-// 	res.render("messaginghome")
-// });
+app.get("/stellarMsg",function(req,res){
+	res.render("messaginghome")
+});
 
 app.get('/login',
   function(req, res){
@@ -56,7 +56,7 @@ app.get('/login/facebook',
 app.get('/login/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-    res.render("messaginghome")
+    res.redirect('/stellarMsg');
   });
 
 // app.get('/login/facebook/return', 
