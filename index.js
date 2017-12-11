@@ -60,13 +60,14 @@ app.get('/stellarMsg',
   });
 
 io.on('connection', function(socket){
+  io.emit('chat message', ' has connected', String(username), 'danger');
   socket.on('chat message', function(msg,from,colorpick){
   	from = username;
   	colorpick = colorname;
     io.emit('chat message', msg, from, colorpick);
   });
   socket.on('disconnect', function(){
-    io.emit('chat message', String(username),' has disconnected','danger');
+    io.emit('chat message', ' has disconnected', String(username), 'danger');
   });
 });
 
