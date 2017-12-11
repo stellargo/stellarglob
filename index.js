@@ -43,14 +43,17 @@ app.use(passport.session());
 
 app.get("/stellarMsg",function(req,res){
 	if (req.user){
+		console.log("111");
 		res.render("messaginghome");
 	} else {
+		console.log("222");
 		res.redirect('/login');
 	}
 });
 
 app.get('/login',
   function(req, res){
+  	console.log("333");
     res.render('login');
   });
 
@@ -60,6 +63,7 @@ app.get('/login/facebook',
 app.get('/login/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
+  	console.log("444");
     res.redirect('/stellarMsg');
   });
 
