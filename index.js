@@ -21,7 +21,8 @@ var serveIndex = require('serve-index');
 app.use(express.static(__dirname + "/stellarnotes"));
 app.use('/stellarnotes', serveIndex(__dirname + '/stellarnotes'));
 app.get("/*.pdf",function(req,res){
-	console.log(req.params);
+	console.log(req.params.0);
+	res.render("stellarnote",{ note: req.params.0 });
 });
 
 //********************************************************
