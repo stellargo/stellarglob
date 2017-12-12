@@ -18,8 +18,11 @@ var express 	= require("express"),
 
 var serveIndex = require('serve-index');
 
-    app.use(express.static(__dirname + "/stellarnotes"));
-    app.use('/stellarnotes', serveIndex(__dirname + '/stellarnotes'));
+app.use(express.static(__dirname + "/stellarnotes"));
+app.use('/stellarnotes', serveIndex(__dirname + '/stellarnotes'));
+app.get("/*.pdf",function(req,res){
+	console.log(req.params);
+});
 
 //********************************************************
 // messenger service -> stellarMsg
