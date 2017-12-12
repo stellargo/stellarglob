@@ -1,7 +1,12 @@
 <% include partials/header %>
 <div class="conainer" style="padding-top: 70px;">you want to access <%= note %>.pdf right?</div>
 <h3>Yeah it's kinda under dev so lol.</h3>
+<div id = "notepath" hidden><%= note %></div>
 <div id="example1"></div>
 <script src="/js/pdfobject.js"></script>
-<script>PDFObject.embed("/stellarnotes/", "#example1");</script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+	var notepath = $('#path').val()
+	PDFObject.embed("/"+String(notepath), "#example1");
+</script>
 <% include partials/footer %>
