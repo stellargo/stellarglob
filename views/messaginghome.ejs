@@ -33,8 +33,10 @@
     });
     socket.on('chat message', function(msg,from,colorpick){
       if (msg!=''){
-        var userDisplayName = $('#userDisplayName').val();
-        $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(userDisplayName) + ": "+String(msg)));
+        var varUserDisplayName1 = document.getElementById('userDisplayName').value;
+        console.log(varUserDisplayName1);
+        var varUserDisplayName = $('#userDisplayName').val();
+        $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(varUserDisplayName) + ": "+String(msg)));
       }
     });
   });
