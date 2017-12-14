@@ -3,7 +3,6 @@
   <div class="container" style="padding-top: 70px; padding-bottom: 20px;">
     <%= user.displayName %>'s chat
   </div>
-  <div id = "userDisplayName" hidden><%= user.displayName %></div>
   <div class="container">
     <ul class="list-group" id="messages">
     </ul>
@@ -21,6 +20,7 @@
     </form>
   </div>
 </div>
+<% var varUserDisplayName = String(user.displayName); %>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
@@ -33,10 +33,9 @@
     });
     socket.on('chat message', function(msg,from,colorpick){
       if (msg!=''){
-        var varUserDisplayName1 = document.getElementById('userDisplayName').value;
+        var varUserDisplayName1 = <%=varUserDisplayName  %>
         console.log(varUserDisplayName1);
-        var varUserDisplayName = $('#userDisplayName').val();
-        $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(varUserDisplayName) + ": "+String(msg)));
+        $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(from) + ": "+String(msg)));
       }
     });
   });
