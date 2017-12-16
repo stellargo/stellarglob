@@ -76,22 +76,49 @@ app.get('/stellarMsg',
   	usersList.push(req.user.displayName);
   	numusers = numusers + 1;
   	thisuser = numusers;
+  	socket.username = usersList[thisuser];
   	colorname = arr[Math.floor(Math.random()*arr.length)];
   	console.log(req.user);
   	res.render("messaginghome",{ user: req.user });
   });
 
+// Socket.io connection(old)
+// io.on('connection', function(socket){
+//   io.emit('chat message', ' has connected', String(username), 'danger', {username: socket.username});
+//   socket.on('chat message', function(msg,from,colorpick){
+//   	from = usersList[thisuser];
+//   	colorpick = colorname;
+//     io.emit('chat message', msg, from, colorpick);
+//   });
+//   socket.on('disconnect', function(){
+//     io.emit('chat message', ' has disconnected', String(username), 'danger');
+//   });
+// });
+
 //Socket.io connection
 io.on('connection', function(socket){
-  io.emit('chat message', ' has connected', String(username), 'danger');
-  socket.on('chat message', function(msg,from,colorpick){
-  	from = usersList[thisuser];
-  	colorpick = colorname;
-    io.emit('chat message', msg, from, colorpick);
+  
+  io.emit('chat message', {
+  	username: socket.username,
+  	message: "has connected"
   });
+  
+  socket.on('chat message', function(data){
+    
+    io.emit('chat message', {
+    	username: socket.username,
+    	message: data
+    });
+
+  });
+  
   socket.on('disconnect', function(){
-    io.emit('chat message', ' has disconnected', String(username), 'danger');
+    io.emit('chat message', {
+    	username: socket.username,
+    	message: "has disconnected"
+    });
   });
+
 });
 
 //********************************************************

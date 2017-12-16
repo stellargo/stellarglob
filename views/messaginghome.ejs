@@ -1,8 +1,5 @@
 <% include partials/header %>
 <div>
-  <div id="random" class="container" style="padding-top: 70px; padding-bottom: 20px;">
-    <%= user.displayName %>'s chat
-  </div>
   <div class="container">
     <ul class="list-group" id="messages">
     </ul>
@@ -30,9 +27,9 @@
       $('#m').val('');
       return false;
     });
-    socket.on('chat message', function(msg,from,colorpick){
+    socket.on('chat message', function(from,msg){
       if (msg!=''){
-        console.log($('#random').val());
+        colorpick = 'primary';
         $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(from) + ": "+String(msg)));
       }
     });
