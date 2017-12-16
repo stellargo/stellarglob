@@ -76,7 +76,6 @@ app.get('/stellarMsg',
   	usersList.push(req.user.displayName);
   	numusers = numusers + 1;
   	thisuser = numusers;
-  	socket.username = usersList[thisuser];
   	colorname = arr[Math.floor(Math.random()*arr.length)];
   	console.log(req.user);
   	res.render("messaginghome",{ user: req.user });
@@ -97,7 +96,7 @@ app.get('/stellarMsg',
 
 //Socket.io connection
 io.on('connection', function(socket){
-  
+  socket.username = usersList[thisuser];
   io.emit('chat message', {
   	username: socket.username,
   	message: "has connected"
