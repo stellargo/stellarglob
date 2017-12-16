@@ -33,10 +33,14 @@ app.get("/stellarnotes/*.pdf",function(req,res){
 //********************************************************
 
 
-var username;
-var colorname;
-var arr = ["primary","secondary","success","info","light"];
+var username; //name of user obtained
+var colorname; //color of the message blobs for one user
+var arr = ["primary","secondary","success","info","light"]; //array for storing color buttons
+var numusers = -1;
+var usersList = []
+var thisuser
 
+//Some passport interface requirements
 passport.use(new Strategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
@@ -45,42 +49,43 @@ passport.use(new Strategy({
   function(accessToken, refreshToken, profile, cb) {
     return cb(null, profile);
   }));
-
 passport.serializeUser(function(user, cb) {
   cb(null, user);
 });
-
 passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
-
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cookieParser());
 
+//GET Route for /login
 app.get('/login',
   function(req, res){
     res.render('login');
   });
 
+//GET Route for /login/facebook
 app.get('/login/facebook',
   passport.authenticate('facebook')
   );
 
+//GET Route for /stellarMsg
 app.get('/stellarMsg',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-  	res.cookie('userFacebookName', req.user.displayName);
-  	username = req.cookies['userFacebookName']
+  	usersList.push(req.user.displayName);
+  	numusers = numusers + 1;
+  	thisuser = numusers;
   	colorname = arr[Math.floor(Math.random()*arr.length)];
   	console.log(req.user);
   	res.render("messaginghome",{ user: req.user });
   });
 
+//Socket.io connection
 io.on('connection', function(socket){
   io.emit('chat message', ' has connected', String(username), 'danger');
   socket.on('chat message', function(msg,from,colorpick){
-  	from = username;
+  	from = usersList[thisuser];
   	colorpick = colorname;
     io.emit('chat message', msg, from, colorpick);
   });
@@ -98,6 +103,7 @@ app.set("view engine","ejs");
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended:true}));
 
+//blogschema is the basic schema for every blog entry
 var blogSchema = new mongoose.Schema({
 	title: String,
 	image: String,
