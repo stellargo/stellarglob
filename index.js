@@ -10,7 +10,8 @@ var express 	= require("express"),
 	http = require('http').Server(app)
 	io = require('socket.io')(http),
 	passport = require('passport'),
-	Strategy = require('passport-facebook').Strategy;
+	Strategy = require('passport-facebook').Strategy
+	cookieParser = require('cookie-parser');
 
 //********************************************************
 // notes service -> stellarNotes
@@ -55,7 +56,7 @@ passport.deserializeUser(function(obj, cb) {
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.cookieParser());
+app.use(cookieParser());
 
 app.get('/login',
   function(req, res){
