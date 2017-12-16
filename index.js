@@ -74,9 +74,7 @@ app.get('/stellarMsg',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
   	usersList.push(req.user.displayName);
-  	numusers = numusers + 1;
-  	thisuser = numusers;
-  	colorname = arr[Math.floor(Math.random()*arr.length)];
+  	thisuser = req.user.displayName;
   	console.log(req.user);
   	res.render("messaginghome",{ user: req.user });
   });
@@ -96,7 +94,7 @@ app.get('/stellarMsg',
 
 //Socket.io connection
 io.on('connection', function(socket){
-  socket.username = usersList[thisuser];
+  socket.username = String(thisuser);
   io.emit('chat message', {
   	username: socket.username,
   	message: "has connected"
