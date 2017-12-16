@@ -55,6 +55,7 @@ passport.deserializeUser(function(obj, cb) {
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.cookieParser());
 
 app.get('/login',
   function(req, res){
@@ -68,7 +69,8 @@ app.get('/login/facebook',
 app.get('/stellarMsg',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-  	username = req.user.displayName;
+  	res.cookie('userFacebookName', req.user.displayName);
+  	username = req.cookies['userFacebookName']
   	colorname = arr[Math.floor(Math.random()*arr.length)];
   	console.log(req.user);
   	res.render("messaginghome",{ user: req.user });
