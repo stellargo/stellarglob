@@ -81,6 +81,7 @@ io.on('connection', function(socket){
   io.emit('chat message', ' has connected', String(username), 'danger');
   socket.on('chat message', function(msg,from,colorpick){
   	colorpick = colorname;
+  	from = username
     io.emit('chat message', msg, from, colorpick);
   });
   socket.on('disconnect', function(){
