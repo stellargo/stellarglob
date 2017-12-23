@@ -27,6 +27,10 @@
       $('#m').val('');
       return false;
     });
+    socket.on('connect', function(){
+    // call the server-side function 'adduser' and send one parameter (value of prompt)
+      socket.emit('adduser', prompt("What's your name?"));
+    });
     socket.on('chat message', function(msg, from, colorpick){
       if (msg!=''){
         $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(from) + ": "+String(msg)));
