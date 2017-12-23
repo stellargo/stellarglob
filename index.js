@@ -38,7 +38,7 @@ app.get("/stellarnotes/*.pdf",function(req,res){
 var usernameFromFB; //name of user obtained
 var colorname = "primary"; //color of the message blobs for one user
 var arr = ["primary","secondary","success","info","light"]; //array for storing color buttons
-var colorIndex = 0;
+var colorIndex = -1;
 
 //Some passport interface requirements
 passport.use(new Strategy({
