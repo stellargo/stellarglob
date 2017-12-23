@@ -82,7 +82,7 @@ io.on('connection', function(socket){
     socket.username = String(username);
   });
   io.emit('chat message', ' has connected', String(socket.username), 'danger');
-  socket.on('chat message', function(msg,colorpick){
+  socket.on('chat message', function(msg){
   	colorpick = colorname;
   	from = String(socket.username);
     io.emit('chat message', msg, from, colorpick);
