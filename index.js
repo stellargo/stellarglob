@@ -35,7 +35,7 @@ app.get("/stellarnotes/*.pdf",function(req,res){
 //********************************************************
 
 
-var username1; //name of user obtained
+var usernameFromFB; //name of user obtained
 var colorname = "primary"; //color of the message blobs for one user
 var arr = ["primary","secondary","success","info","light"]; //array for storing color buttons
 
@@ -72,14 +72,14 @@ app.get('/login/facebook',
 app.get('/stellarMsg',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-  	username1 = req.user.displayName;
+  	usernameFromFB = req.user.displayName;
   	console.log(req.user);
   	res.render("messaginghome",{ user: req.user });
   });
 
 io.on('connection', function(socket){
-	socket.on('adduser', function(username){
-		socket.username = username1;
+	socket.on('adduser', function(){
+		socket.username = usernameFromFB;
 	});
 	socket.on('chat message', function(msg){
 		colorpick = colorname;
