@@ -77,11 +77,10 @@ app.get('/stellarMsg',
   	res.render("messaginghome",{ user: req.user });
   });
 
-io.on('connection', function(socket){
-  socket.on('connect', function(username){
+  io.on('connection', function(socket){
+   socket.on('connect', function(){
     socket.username = String(username);
-  });
-  io.emit('chat message', ' has connected', String(socket.username), 'danger');
+   });
   socket.on('chat message', function(msg){
   	colorpick = colorname;
   	from = String(socket.username);
@@ -91,32 +90,6 @@ io.on('connection', function(socket){
     io.emit('chat message', ' has disconnected', String(socket.username), 'danger');
   });
 });
-
-//Socket.io connection
-// io.on('connection', function(socket){
-//   socket.username = String(thisuser);
-//   io.emit('chat message', {
-//   	username: socket.username,
-//   	message: "has connected"
-//   });
-  
-//   socket.on('chat message', function(data){
-    
-//     io.emit('chat message', {
-//     	username: socket.username,
-//     	message: data
-//     });
-
-//   });
-  
-//   socket.on('disconnect', function(){
-//     io.emit('chat message', {
-//     	username: socket.username,
-//     	message: "has disconnected"
-//     });
-//   });
-
-// });
 
 //********************************************************
 // blogging service -> stellarglob
