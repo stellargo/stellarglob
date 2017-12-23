@@ -27,7 +27,7 @@
       $('#m').val('');
       return false;
     });
-    socket.on('chat message', msg, from, colorpick function(data){
+    socket.on('chat message', msg, from, colorpick, function(data){
       if (msg!=''){
         $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(from) + ": "+String(msg)));
       }
