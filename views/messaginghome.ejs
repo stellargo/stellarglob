@@ -27,10 +27,9 @@
       $('#m').val('');
       return false;
     });
-    socket.on('chat message', function(data){
+    socket.on('chat message', msg, from, colorpick function(data){
       if (msg!=''){
-        colorpick = 'primary';
-        $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(data.username) + ": "+String(data.message)));
+        $('#messages').append($('<div class="alert alert-'+String(colorpick)+'" role="alert">').text(String(from) + ": "+String(msg)));
       }
     });
   });
