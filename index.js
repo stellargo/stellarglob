@@ -80,12 +80,10 @@ app.get('/stellarMsg',
   });
 
 io.on('connection', function(socket){
-	socket.on('connect', function(){
-		io.emit('chat message', ' has connected', String(socket.username), 'danger');
-	});
 	socket.on('adduser', function(){
 		socket.username = usernameFromFB;
 		socket.colorcode = colorIndex;
+		io.emit('chat message', ' has connected', String(socket.username), 'danger');
 	});
 	socket.on('chat message', function(msg){
 		colorpick = arr[socket.colorcode];
