@@ -81,7 +81,6 @@ app.get('/stellarMsg',
   	res.render("messaginghome",{ user: req.user });
   });
 
-Socket.io connection(old)
 io.on('connection', function(socket){
   io.emit('chat message', ' has connected', String(username), 'danger', {username: socket.username});
   socket.on('chat message', function(msg,from,colorpick){
