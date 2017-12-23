@@ -78,7 +78,7 @@ app.get('/stellarMsg',
   });
 
 io.on('connection', function(socket){
-  socket.on('connect', function(){
+  socket.on('connect', function(username){
     socket.username = String(username);
   });
   io.emit('chat message', ' has connected', String(socket.username), 'danger');
