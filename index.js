@@ -81,44 +81,44 @@ app.get('/stellarMsg',
   	res.render("messaginghome",{ user: req.user });
   });
 
-// Socket.io connection(old)
-// io.on('connection', function(socket){
-//   io.emit('chat message', ' has connected', String(username), 'danger', {username: socket.username});
-//   socket.on('chat message', function(msg,from,colorpick){
-//   	from = usersList[thisuser];
-//   	colorpick = colorname;
-//     io.emit('chat message', msg, from, colorpick);
-//   });
-//   socket.on('disconnect', function(){
-//     io.emit('chat message', ' has disconnected', String(username), 'danger');
-//   });
-// });
+Socket.io connection(old)
+io.on('connection', function(socket){
+  io.emit('chat message', ' has connected', String(username), 'danger', {username: socket.username});
+  socket.on('chat message', function(msg,from,colorpick){
+  	from = usersList[thisuser];
+  	colorpick = colorname;
+    io.emit('chat message', msg, from, colorpick);
+  });
+  socket.on('disconnect', function(){
+    io.emit('chat message', ' has disconnected', String(username), 'danger');
+  });
+});
 
 //Socket.io connection
-io.on('connection', function(socket){
-  socket.username = String(thisuser);
-  io.emit('chat message', {
-  	username: socket.username,
-  	message: "has connected"
-  });
+// io.on('connection', function(socket){
+//   socket.username = String(thisuser);
+//   io.emit('chat message', {
+//   	username: socket.username,
+//   	message: "has connected"
+//   });
   
-  socket.on('chat message', function(data){
+//   socket.on('chat message', function(data){
     
-    io.emit('chat message', {
-    	username: socket.username,
-    	message: data
-    });
+//     io.emit('chat message', {
+//     	username: socket.username,
+//     	message: data
+//     });
 
-  });
+//   });
   
-  socket.on('disconnect', function(){
-    io.emit('chat message', {
-    	username: socket.username,
-    	message: "has disconnected"
-    });
-  });
+//   socket.on('disconnect', function(){
+//     io.emit('chat message', {
+//     	username: socket.username,
+//     	message: "has disconnected"
+//     });
+//   });
 
-});
+// });
 
 //********************************************************
 // blogging service -> stellarglob
