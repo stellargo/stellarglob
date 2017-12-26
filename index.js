@@ -10,7 +10,7 @@ var express 	= require("express"),
 	http = require('http').Server(app)
 	io = require('socket.io')(http),
 	passport = require('passport'),
-	Strategy = require('passport-facebook').Strategy
+	Strategy = require('passport-facebook').Strategy,
 	cookieParser = require('cookie-parser');
 
 //********************************************************
