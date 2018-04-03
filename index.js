@@ -30,7 +30,6 @@ app.use('/notes', serveIndex(__dirname + '/public/notes'));
 
 
 var usernameFromFB; //name of user obtained
-var colorname = "primary"; //color of the message blobs for one user
 var arr = ["primary","secondary","success","info","light"]; //array for storing color buttons
 var colorIndex = -1;
 
