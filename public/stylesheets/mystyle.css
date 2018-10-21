@@ -13,6 +13,11 @@
 	color: #1b0072;
 }
 
+.github{
+  text-align: center;
+  padding-top: 100px;
+}
+
 body{
 	/*padding-top: 100px;*/
 	background: url('http://www.sumitsarin.in/images/blue.png') no-repeat center center fixed;
