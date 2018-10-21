@@ -15,7 +15,8 @@
 
 .github{
   text-align: center;
-  padding-top: 100px;
+  padding-top: 1px;
+  color: #000000;
 }
 
 body{
